@@ -1,5 +1,8 @@
 # NEWS
 
+## 0.3.1
+- add pid colorscheme
+
 ## 0.3.0 
 
 - add nucleotide colro argument

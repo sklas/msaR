@@ -162,6 +162,7 @@ colorschemes <- c(
   "lesk",
   "mae",
   "nucleotide",
+  "pid",
   "purine",
   "strand",
   "taylor",
