@@ -7,21 +7,15 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     
     // define the object at the root node
-    //m = new msa(el.id)
-    
-    var rootDiv = el.id;
-    var parse   = require("biojs-io-fasta").parse;
-    var opts; 
     
     return {
           renderValue: function(x) {
               
               // msa is initialized with a DOM element, seqs, config, viz, and zoomer
               // https://github.com/wilzbach/msa/blob/master/src/msa.js
-              opts      = x.config;
-              opts.el   = rootDiv;
-              console.log(x.alignment);
-              console.log(parse);
+              var opts  = x.config;
+              var parse = require("biojs-io-fasta").parse;
+              opts.el   = el;
               opts.seqs = parse(x.alignment);
     
               var m = msa(opts);
