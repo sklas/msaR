@@ -1,3 +1,32 @@
+#' msaR sizing policy
+#'
+#' Sizing policy used withing msaR htmlwidgets.  All arguments are passed directly to \code{htmlwidgets::\link[htmlwidgets]{sizingPolicy}}
+#'
+#' @export
+#' @param defaultWidth defaults to \code{"100\%"} of the available width
+#' @param defaultHeight defaults to 400px tall
+#' @param padding defaults to 0px
+#' @param browser.fill defaults to \code{TRUE}
+#' @param ... all other arguments supplied to \code{htmlwidgets::\link[htmlwidgets]{sizingPolicy}}
+#' @return An \code{htmlwidgets::sizingPolicy} object
+msarSizingPolicy <- function(
+  defaultWidth = "100%",
+  defaultHeight = 400,
+  padding = 0,
+  browser.fill = TRUE,
+  ...
+  # not adding extra arguments as htmlwidgets::sizingPolicy can change their own args
+) {
+  htmlwidgets::sizingPolicy(
+    defaultWidth = defaultWidth,
+    defaultHeight = defaultHeight,
+    padding = padding,
+    browser.fill = browser.fill,
+    ...
+  )
+}
+
+
 #' msaR
 #'
 #' Dynamic Multiple Sequence Alignments in R and Shiny
@@ -22,6 +51,7 @@
 #' @param labelNameLength optional. Default \code{100}. Width of the Label Names.
 #' @param overviewboxWidth optional. Default. \code{"auto"}. Can also be "fixed"
 #' @param overviewboxHeight optional. Default. \code{"fixed"}. Can also be an integer value.
+#' 
 #' @export
 #' @examples 
 #' seqfile <- system.file("sequences","AHBA.aln",package="msaR")
@@ -43,7 +73,8 @@ msaR <- function(msa,
                  labelid = TRUE,
                  labelNameLength = 100,
                  overviewboxWidth = "auto",
-                 overviewboxHeight = "fixed"
+                 overviewboxHeight = "fixed",
+                 sizingPolicy = msarSizingPolicy()
                  ) {
   config <- list(
     vis=list(
@@ -137,6 +168,7 @@ msaR <- function(msa,
   htmlwidgets::createWidget(
     name = 'msaR',
     x,
+    sizingPolicy = sizingPolicy,
     width = width,
     height = height,
     package = 'msaR'

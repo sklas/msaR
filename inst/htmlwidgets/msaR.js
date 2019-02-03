@@ -1,3 +1,6 @@
+var alldata;
+var m2 ;
+
 HTMLWidgets.widget({
 
   name: 'msaR',
@@ -7,9 +10,11 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     
     // define the object at the root node
-    
+    var m = msa(el);
+  
     return {
           renderValue: function(x) {
+              alldata = x;
               
               // msa is initialized with a DOM element, seqs, config, viz, and zoomer
               // https://github.com/wilzbach/msa/blob/master/src/msa.js
@@ -19,8 +24,11 @@ HTMLWidgets.widget({
               opts.seqs = parse(x.alignment);
     
               var m = msa(opts);
+              m2 = m;
 
               // init msa
+              
+              // move the div ID to the msa.R 
               if (x.menu) {
                 // the menu is independent to the MSA container
                 var menuOpts = {};
@@ -63,8 +71,15 @@ HTMLWidgets.widget({
             },
 
     resize: function(width, height) {
+        
+        //for (var name in m.renderers)
+        //  console.log(name);
+        //  m.renderers[name].resize(width, height);  
       
-      }
+      },
+      
+    msajs: m
+    
     }
   }
 });
