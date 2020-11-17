@@ -45,6 +45,21 @@ msaR(seqfile, menu=F, overviewbox = F)
 
 
 
+## Protein MSA
+
+```{r}
+
+# read some sequences from a Multiple sequence alignment file.
+proteinseqfile <- system.file("sequences","phosphoproteins.aln", package="msaR")
+
+# note the seqlogo will show up in your widget but 
+# not the vignette static output
+msaR(proteinseqfile, menu=F, overviewbox = F,  colorscheme = "clustal")
+
+```
+
+
+
 ## Use as a Shiny widget
 
 msaR can be used as a widget with the [Shiny](http://shiny.rstudio.com/) web application framework.
