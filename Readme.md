@@ -1,21 +1,31 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-msaR
-====
 
-[![Travis Build Status](https://travis-ci.org/zachcp/msaR.svg?branch=master)](https://travis-ci.org/zachcp/msaR) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/msaR)](https://cran.r-project.org/package=msaR)
+# msaR
 
-msaR is a an [htmlwidgets](https://github.com/ramnathv/htmlwidgets) wrapper of the [BioJS MSA viewer](https://github.com/wilzbach/msa) javascript library. msa will pass alignments to the BioJS MSA and has a convenience function that will handle the following formats:
+[![Travis Build
+Status](https://travis-ci.org/zachcp/msaR.svg?branch=master)](https://travis-ci.org/zachcp/msaR)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/msaR)](https://cran.r-project.org/package=msaR)
 
-1.  A character string which is interpreted to be a fasta file (opened by `ape::read.dna`)
+msaR is a an [htmlwidgets](https://github.com/ramnathv/htmlwidgets)
+wrapper of the [BioJS MSA viewer](https://github.com/wilzbach/msa)
+javascript library. msa will pass alignments to the BioJS MSA and has a
+convenience function that will handle the following formats:
+
+1.  A character string which is interpreted to be a fasta file (opened
+    by `ape::read.dna`)
 2.  A DNAbin class object (ape)
-3.  An XStringSet (Biostrings) including "DNAStringSet", "RNAStringSet", "AAStringSet", and "BStringSet"
-4.  An XMultiple Alignment (Biostings) including "DNAMultipleAlignment","RNAMultipleAlignment", and"AAMultipleAlignment"
+3.  An XStringSet (Biostrings) including “DNAStringSet”, “RNAStringSet”,
+    “AAStringSet”, and “BStringSet”
+4.  An XMultiple Alignment (Biostings) including
+    “DNAMultipleAlignment”,“RNAMultipleAlignment”,
+    and“AAMultipleAlignment”
 
-Any of these types of objects can be passed to msaR to create an html widget. See [the online docs](https://zachcp.github.io/msaR/) for an interactive version of this widget.
+Any of these types of objects can be passed to msaR to create an html
+widget. See [the online docs](https://zachcp.github.io/msaR/) for an
+interactive version of this widget.
 
-Installation
-------------
+## Installation
 
 You can install msaR from github with:
 
@@ -23,8 +33,7 @@ You can install msaR from github with:
 install.packages("msaR")
 ```
 
-Example
--------
+## Example
 
 This is a basic example which shows you how to solve a common problem:
 
@@ -33,21 +42,31 @@ library(msaR)
 
 # read some sequences from a multiple sequence alignment file and display
 seqfile <- system.file("sequences","AHBA.aln", package="msaR")
-msaR(seqfile)
+msaR(seqfile, colorscheme = "pid")
 ```
 
 ![](man/figures/msaR_screenshot.png)
 
-All contributions are welcome! Please feel free to submit a pull request.
+All contributions are welcome\! Please feel free to submit a pull
+request.
 
 ### Support and Suggestions
 
-If you have any problem or suggestion please open an issue [here](https://github.com/zachcp/msaR/issues)
+If you have any problem or suggestion please open an issue
+[here](https://github.com/zachcp/msaR/issues)
 
 ### License
 
-This project is licensed under the [Boost Software License 1.0](https://github.com/wilzbach/msa/blob/master/LICENSE).
+This project is licensed under the [Boost Software
+License 1.0](https://github.com/wilzbach/msa/blob/master/LICENSE).
 
-> Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:
+> Permission is hereby granted, free of charge, to any person or
+> organization obtaining a copy of the software and accompanying
+> documentation covered by this license (the “Software”) to use,
+> reproduce, display, distribute, execute, and transmit the Software,
+> and to prepare derivative works of the Software, and to permit
+> third-parties to whom the Software is furnished to do so, all subject
+> to the following:
 
-If you use the MSAViewer on your website, it solely requires you to link to us
+If you use the MSAViewer on your website, it solely requires you to link
+to us
