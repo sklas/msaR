@@ -21,7 +21,7 @@
 #' @examples 
 #' seqfile <- system.file("sequences","AHBA.aln",package="msaR")
 #' as.sequences(seqfile)
-#' help("as.sequences)
+#' help("as.sequences")
 #' 
 #' if (requireNamespace("Biostrings", quietly = TRUE)) {
 #'    seqs <- Biostrings::readDNAStringSet(seqfile)
@@ -42,9 +42,10 @@ as.sequences <- function(seqs) {
   # then DNAbin and AAbin
   if (class(seqs) %in% c("AAbin", "DNAbin")) {
     
-    aln     <- as.alignment(as.character(seqs))
+    aln     <- ape::as.alignment(as.character(seqs))
     
-    seqlist <-  lapply(seq(aln),  function(x){
+    
+    seqlist <-  lapply(seq(1:length(aln$nam)),  function(x){
       list(id=aln$nam[x], 
            name=aln$nam[x], 
            seq=aln$seq[x])})
