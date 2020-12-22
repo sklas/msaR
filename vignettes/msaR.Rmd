@@ -52,9 +52,12 @@ msaR(seqfile, menu=F, overviewbox = F)
 # read some sequences from a Multiple sequence alignment file.
 proteinseqfile <- system.file("sequences","phosphoproteins.aln", package="msaR")
 
+# loading AA with ape. Can also use Biostrings
+proteins <- ape::read.FASTA(proteinseqfile, type="AA")
+                            
 # note the seqlogo will show up in your widget but 
 # not the vignette static output
-msaR(proteinseqfile, menu=F, overviewbox = F,  colorscheme = "clustal")
+msaR(proteins, menu=F, overviewbox = F,  colorscheme = "clustal")
 
 ```
 
