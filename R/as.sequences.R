@@ -50,6 +50,9 @@ as.sequences <- function(seqs) {
            name=aln$nam[x], 
            seq=aln$seq[x])})
     
+    
+    check_lengths(seqlist)
+    
     return(seqlist)
   }
   
@@ -69,6 +72,8 @@ as.sequences <- function(seqs) {
                seq=unname(as.character(seqs[x])))
         })
 
+        check_lengths(seqlist)
+        
         return(seqlist)
       }
       
@@ -93,3 +98,23 @@ as.sequences <- function(seqs) {
   
 }
 
+
+#' check_lengths
+#'
+#' optimistic loading can lead to issues. All MSAs
+#' should have identical length. if not theres a problem.
+check_lengths <- function(seqlist) {
+  
+  seqlengths <- as.numeric(lapply(seqlist, function(s){nchar(s$seq)}))
+  
+  all_lengths_the_same <- length(unique(seqlengths))==1
+  
+  if (all_lengths_the_same == FALSE) {
+    stop("We detected that all lengths of this alignment are not identical
+         this can sometimes happend when attempting to open an Amino Acid
+         alignment. Try explicitly loading your alignment with
+         Biostrings before passing to msaR. IF this is not the issue
+         please file a bug on github: https://github.com/zachcp/msaR/issues")
+    
+  }
+}
