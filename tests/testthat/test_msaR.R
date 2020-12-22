@@ -1,11 +1,13 @@
 context("test msaR")
 library(msaR)
 
-seqfile  <- system.file("sequences","AHBA.aln", package="msaR")
-testseqs <- ape::read.FASTA(seqfile)
-  
 
 test_that("serialization to sequences works", {
+  seqfile  <- system.file("sequences","AHBA.aln", package="msaR")
+  testseqs <- ape::read.FASTA(seqfile)
+  
+  
+  
   converted_sequences <- as.sequences(testseqs)
   
   expect_equal(length(converted_sequences), 11)
@@ -19,6 +21,11 @@ test_that("serialization to sequences works", {
 
 
 test_that("msaR inits", {
+  
+  seqfile  <- system.file("sequences","AHBA.aln", package="msaR")
+  testseqs <- ape::read.FASTA(seqfile)
+  
+  
   widget <- msaR(seqfile)
   
   testthat::expect_true(inherits(widget, "msaR"))
