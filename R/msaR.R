@@ -135,7 +135,7 @@ msaR <- function(msa,
   
   # forward options using x
   x <- list(
-    alignment=as.fasta(msa),
+    sequences=as.sequences(msa),
     config=config,
     menu=menu,
     features=NULL
