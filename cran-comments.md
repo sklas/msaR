@@ -1,8 +1,7 @@
-This is a minor update to the msaR package that fixes the image location in the vignette and adds the ability to choose/change colorschemes. 
+This is a minor update to the msaR package has a number of small bugfixes. Notably there is better serialization between R and JS that fixes some issues with amino acid MSAs.
 
 ## Test environments
-* local OS X install, R 3.4.2
-* ubuntu 12.04 (on travis-ci), R 3.4.2
+* local OS X install, R 4.0.2
 * win-builder (devel and release)
 
 ## R CMD check results
