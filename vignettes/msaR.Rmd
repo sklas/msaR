@@ -60,7 +60,7 @@ msaR(proteins, menu=F, overviewbox = F,  colorscheme = "clustal")
 
 ## Use as a Shiny widget
 
-msaR can be used as a widget with the [Shiny](http://shiny.rstudio.com/) web application framework.
+msaR can be used as a widget with the [Shiny](https://shiny.rstudio.com/) web application framework.
 
 In ui.R
 ```{r, eval=FALSE}
