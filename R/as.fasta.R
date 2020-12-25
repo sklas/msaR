@@ -23,11 +23,12 @@
 #' as.fasta(seqfile)
 #' help("as.fasta")
 #' 
-#' if (requireNamespace("Biostrings", quietly = TRUE)) {
-#'    seqs <- Biostrings::readDNAStringSet(seqfile)
+#' \dontrun{
+#' if (requireNamespace("Biostrings")) {
+#'    seqs <- readDNAStringSet(seqfile)
 #'    as.fasta(seqs)
+#'  }
 #' }
-#' 
 as.fasta <- function(seqs) {
   
   # try character sequences first
@@ -52,7 +53,7 @@ as.fasta <- function(seqs) {
                        "DNAMultipleAlignment","RNAMultipleAlignment", "AAMultipleAlignment")) {
     
     # check for Biostring Namespace
-    if (requireNamespace("Biostrings")) {
+    if (requireNamespace("Biostrings", quietly = TRUE)) {
       
       if (class(seqs) %in% c("DNAStringSet", "RNAStringSet", "AAStringSet")) {
         newnames <- paste0(">", names(seqs))

@@ -12,6 +12,7 @@ Imports:
   ape,
   htmlwidgets
 Suggests:
+    Biostrings,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)

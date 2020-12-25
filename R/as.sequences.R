@@ -23,9 +23,11 @@
 #' as.sequences(seqfile)
 #' help("as.sequences")
 #' 
-#' if (requireNamespace("Biostrings", quietly = TRUE)) {
-#'    seqs <- Biostrings::readDNAStringSet(seqfile)
+#' \dontrun{
+#' if (requireNamespace("Biostrings")) {
+#'    seqs <- readDNAStringSet(seqfile)
 #'    as.sequences(seqs)
+#'  }
 #' }
 #' 
 as.sequences <- function(seqs) {
@@ -51,7 +53,7 @@ as.sequences <- function(seqs) {
            seq=aln$seq[x])})
     
     
-    check_lengths(seqlist)
+    .check_lengths(seqlist)
     
     return(seqlist)
   }
@@ -60,9 +62,9 @@ as.sequences <- function(seqs) {
   # Then Biostrings
   if (class(seqs) %in% c("DNAStringSet","AAStringSet", "RNAStringSet", "BStringSet", 
                          "DNAMultipleAlignment","RNAMultipleAlignment", "AAMultipleAlignment")) {
-    
+
     # check for Biostring Namespace
-    if (requireNamespace("Biostrings")) {
+    if (requireNamespace("Biostrings", quietly = TRUE)) {
       
       if (class(seqs) %in% c("DNAStringSet", "RNAStringSet", "AAStringSet")) {
         
@@ -72,7 +74,7 @@ as.sequences <- function(seqs) {
                seq=unname(as.character(seqs[x])))
         })
 
-        check_lengths(seqlist)
+        .check_lengths(seqlist)
         
         return(seqlist)
       }
@@ -101,9 +103,12 @@ as.sequences <- function(seqs) {
 
 #' check_lengths
 #'
+#' @param seqlist
+#' 
 #' optimistic loading can lead to issues. All MSAs
 #' should have identical length. if not theres a problem.
-check_lengths <- function(seqlist) {
+#' 
+.check_lengths <- function(seqlist) {
   
   seqlengths <- as.numeric(lapply(seqlist, function(s){nchar(s$seq)}))
   

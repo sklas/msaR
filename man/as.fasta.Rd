@@ -27,9 +27,10 @@ seqfile <- system.file("sequences","AHBA.aln",package="msaR")
 as.fasta(seqfile)
 help("as.fasta")
 
-if (requireNamespace("Biostrings", quietly = TRUE)) {
-   seqs <- Biostrings::readDNAStringSet(seqfile)
+\dontrun{
+if (requireNamespace("Biostrings")) {
+   seqs <- readDNAStringSet(seqfile)
    as.fasta(seqs)
+ }
 }
-
 }
