@@ -44,6 +44,7 @@ msaR <- function(msa,
                  labels = TRUE,
                  labelname = TRUE,
                  labelid = FALSE,
+                 hide = NULL,
                  labelNameLength = 100,
                  overviewboxWidth = "auto",
                  overviewboxHeight = "fixed"
@@ -75,7 +76,7 @@ msaR <- function(msa,
       metaLinks=TRUE
     ),
     columns=list(
-      hidden=1:2
+      hidden=hide
     ),
     conf=list(
       dropImport=TRUE,
