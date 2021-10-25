@@ -23,7 +23,7 @@ HTMLWidgets.widget({
 
     // init msa
     var m = instance.msa(opts);
-    
+
     var cscheme = opts.colorscheme.scheme;
     var test = m.g.colorscheme.set("scheme", cscheme);
 
@@ -63,6 +63,10 @@ HTMLWidgets.widget({
 
       m.seqs.addFeatures(features);
     }
+    m.g.on("column:click", function(data){
+      console.log(data);
+      Shiny.setInputValue("columnClick", data.rowPos, {priority: "event"});
+    });
 
     // call render at the end to display the whole MSA
     m.render();

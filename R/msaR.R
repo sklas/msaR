@@ -3,7 +3,7 @@
 #' Dynamic Multiple Sequence Alignments in R and Shiny
 #'
 #' @import htmlwidgets
-#' 
+#'
 #' @param msa File or BioString  Object representing a multiple Sequence Alignment.
 #' @param menu Optional. Default \code{TRUE}. Determines whether to include the interactive menu.
 #' @param width Optional. Default \code{NULL}. The width of the html widget element.
@@ -11,11 +11,11 @@
 #' @param rowheight Optional. Default \code{20}. Height of a row in the MSA.
 #' @param alignmentHeight Optional. Default \code{225}. Height of the MSA.
 #' @param overviewbox optional. Default \code{TRUE}. Include the overview box?
-#' @param colorscheme optional. Default \code{"nucleotide"}. The color scheme to use. Can be one of the following: 
+#' @param colorscheme optional. Default \code{"nucleotide"}. The color scheme to use. Can be one of the following:
 #'     "buried","cinema","clustal","clustal2","helix","hydro","lesk","mae","nucleotide","purine","strand","taylor","turn","zappo"
 #' @param seqlogo optional. Default \code{TRUE}. Include the seqlogo?
 #' @param conservation optional. Default \code{TRUE}. Include the conservation widget?
-#' @param markers optional. Default \code{TRUE}. Include the alignment markers? These are the numbers along the top that 
+#' @param markers optional. Default \code{TRUE}. Include the alignment markers? These are the numbers along the top that
 #' @param metacell optional. Default \code{FALSE}. Include the per-sequence metadata.
 #' @param leftheader optional. Default \code{TRUE}. Include the header information.
 #' @param labels optional. Default \code{TRUE}. Include all of the sequence information msa Labels.
@@ -25,17 +25,17 @@
 #' @param overviewboxWidth optional. Default. \code{"auto"}. Can also be "fixed"
 #' @param overviewboxHeight optional. Default. \code{"fixed"}. Can also be an integer value.
 #' @export
-#' @examples 
+#' @examples
 #' seqfile <- system.file("sequences","AHBA.aln",package="msaR")
 #' msaR(seqfile)
-msaR <- function(msa, 
-                 menu=TRUE, 
-                 width = NULL, 
+msaR <- function(msa,
+                 menu=TRUE,
+                 width = NULL,
                  height = NULL,
                  rowheight = 15,
                  alignmentHeight = 225,
                  overviewbox = TRUE,
-                 seqlogo = TRUE,
+                 seqlogo = FALSE,
                  colorscheme="nucleotide",
                  conservation = FALSE,
                  markers = TRUE,
@@ -48,11 +48,11 @@ msaR <- function(msa,
                  overviewboxWidth = "auto",
                  overviewboxHeight = "fixed"
                  ) {
-  
+
   if (!colorscheme %in% colorschemes) {
     stop(paste("Color scheme must be on one of the following: ", colorschemes))
   }
-  
+
   config <- list(
     vis=list(
       conserv=conservation,
@@ -73,6 +73,9 @@ msaR <- function(msa,
       metaGaps=TRUE,
       metaIdentity=TRUE,
       metaLinks=TRUE
+    ),
+    columns=list(
+      hidden=1:2
     ),
     conf=list(
       dropImport=TRUE,
@@ -132,7 +135,7 @@ msaR <- function(msa,
     )
   )
 
-  
+
   # forward options using x
   x <- list(
     sequences=as.sequences(msa),
@@ -150,7 +153,6 @@ msaR <- function(msa,
     package = 'msaR'
   )
 }
-
 
 colorschemes <- c(
   "buried",
