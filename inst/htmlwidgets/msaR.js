@@ -65,7 +65,11 @@ HTMLWidgets.widget({
     }
     m.g.on("column:click", function(data){
       console.log(data);
-      Shiny.setInputValue("columnClick", data.rowPos, {priority: "event"});
+      ns = moduleNamespace(x.moduleNS, "columnClick");
+      console.log(x.moduleNS);
+      console.log(ns);
+      Shiny.setInputValue(ns, data.rowPos, {priority: "event"});
+      // Shiny.setInputValue("columnClick", data.rowPos, {priority: "event"});
     });
 
     // call render at the end to display the whole MSA
@@ -77,3 +81,9 @@ HTMLWidgets.widget({
   }
 
 });
+
+function moduleNamespace(ns, nameEvent)
+{
+    return(ns + nameEvent);
+}
+//----------------------------------------------------------------------------------------------------

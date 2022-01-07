@@ -142,8 +142,11 @@ msaR <- function(msa,
     sequences=as.sequences(msa),
     config=config,
     menu=menu,
-    features=NULL
-  )
+    features=NULL  )
+
+  #send namespace info in case widget is being called from a module
+  session <- shiny::getDefaultReactiveDomain()
+  x$moduleNS <- session$ns("")
 
   # create widget
   htmlwidgets::createWidget(
